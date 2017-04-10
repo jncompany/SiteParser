@@ -1,5 +1,6 @@
 package com.jncompany.vo;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,6 +15,8 @@ public class PostVo {
 	private String site;
 	private String subject;
 	private String link;
+	
+	@Column( length = 1000 )
 	private String imgsrc;
 	private String content;
 	private String time;
