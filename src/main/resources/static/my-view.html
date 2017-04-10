@@ -1,0 +1,94 @@
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<!--
+<link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
+-->
+<link rel="import" href="../bower_components/byutv-jsonp/byutv-jsonp.html" />
+<link rel="import" href="shared-styles.html">
+
+<dom-module id="my-view1">
+  <template>
+    <style include="shared-styles">
+      :host {
+        display: block;
+
+        padding: 10px;
+      }
+    </style>
+
+    
+    <div> Employee list: </div>
+    <template is="dom-repeat" id="employeeList" items="{{employees}}">
+        <div># [[index]]</div>
+        <div>First name: [[item.first]]</span></div>
+        <div>Last name: [[item.last]]</span></div>
+        <button on-click="toggleSelection">Select</button>
+    </template>
+
+    <array-selector id="selector" items="{{employees}}" selected="{{selected}}" multi toggle></array-selector>
+
+    <div> Selected employees: </div>
+    <template is="dom-repeat" items="{{selected}}">
+        <div>First name: <span>{{item.first}}</span></div>
+        <div>Last name: <span>{{item.last}}</span></div>
+    </template>
+
+
+    <byutv-jsonp auto
+                  url="http://localhost:8080/list"
+                  last-response="{{data}}"
+                  debounce-duration="300"></byutv-jsonp>
+    <template is="dom-repeat" items="{{data.results}}">
+        <div>Site : <span>{{item.site}}</span></div>
+    </template>
+    <template is="dom-if" if="{{lastError}}">
+      <div>
+        <h1>There was an error retrieving the data.</h1>
+      </div>
+    </template>     
+    <!--
+    <iron-ajax auto url="http://127.0.0.1:8080/list" handle-as="json" last-response="{{data}}"></iron-ajax>
+    <template is="dom-repeat" items="{{data}}">
+        <div>Site : <span>{{item.site}}</span></div>
+    </template>
+    -->
+    
+
+  </template>
+
+  <script>
+    class MyView1 extends Polymer.Element {
+      static get is() { return 'my-view1'; }
+      static get properties() {
+        return {
+          employees: {
+            type: Array,
+            value() {
+              return [
+                {first: 'Bob', last: 'Smith'},
+                {first: 'Sally', last: 'Johnson'}
+              ];
+            }
+          }
+        }
+      }
+      toggleSelection(e) {
+        var item = this.$.employeeList.itemForElement(e.target);
+        this.$.selector.select(item);
+      }
+            
+    }
+
+    window.customElements.define(MyView1.is, MyView1);
+  </script>
+</dom-module>
