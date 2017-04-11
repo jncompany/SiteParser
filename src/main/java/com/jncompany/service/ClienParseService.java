@@ -17,7 +17,7 @@ import com.jncompany.util.CompareCntDesc2;
 import com.jncompany.vo.PostVo;
 
 @Service
-public class ClienPaseService {
+public class ClienParseService {
 
 	@Autowired
 	private PostRepository dao;
