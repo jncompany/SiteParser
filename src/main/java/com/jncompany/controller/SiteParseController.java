@@ -57,7 +57,7 @@ public class SiteParseController {
 	}
 	
 	@RequestMapping("/parseAll")
-	public void parse(HttpServletResponse response) throws IOException{
+	public void parse(HttpServletResponse response) throws IOException {
 		
 		System.out.println("cnt 1 : "+ getCurrentRowCount());
 		
@@ -74,8 +74,8 @@ public class SiteParseController {
 	}
 	
 	
-	public int getCurrentRowCount(){
-		return ((List<PostVo>) dao.findAll()).size();
+	public long getCurrentRowCount(){
+		return dao.count();
 	}
 
 

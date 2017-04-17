@@ -59,8 +59,8 @@ public class PpomParseService {
 
 					String imgUrl = detailEl.select("img").attr("src").toString();
 					String imgStr = "".equals(detailEl.select("img").attr("src").toString()) ? "" : "<첨부이미지> ";
-					String cont = detailEl.text().length() > 50
-								? detailEl.text().substring(0, 50) + "..."
+					String cont = detailEl.text().length() > 100
+								? detailEl.text().substring(0, 100) + "..."
 								: detailEl.text();
 					
 
@@ -96,7 +96,7 @@ public class PpomParseService {
 
 				PostVo bbs = new PostVo();
 
-				String subject = el.getElementsByTag("td").eq(2).text();
+				String subject = el.getElementsByTag("td").eq(2).select("a").text();
 				String detailUrl = baseUrl + el.getElementsByTag("td").eq(2).select("a").attr("href").toString();
 
 				bbs.setSubject(subject);;

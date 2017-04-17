@@ -58,8 +58,8 @@ public class ClienParseService {
 					String imgUrl = detailEl.getElementsByClass("attachedImage").select("img").eq(0).attr("src")
 							.toString();
 					String imgStr = detailEl.getElementsByClass("attachedImage").size() > 0 ? "<첨부이미지> " : "";
-					String cont = detailEl.getElementById("writeContents").text().length() > 50
-							? detailEl.getElementById("writeContents").text().substring(0, 50) + "..."
+					String cont = detailEl.getElementById("writeContents").text().length() > 100
+							? detailEl.getElementById("writeContents").text().substring(0, 100) + "..."
 							: detailEl.getElementById("writeContents").text();
 
 					bbs.setImgsrc(imgUrl);

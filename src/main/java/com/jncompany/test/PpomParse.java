@@ -88,11 +88,11 @@ public class PpomParse {
 			for (Element el : contents) {
 
 				ItemVo bbs = new ItemVo();
-
-				String subject = el.getElementsByTag("td").eq(2).text();
+				
+				String subject = el.getElementsByTag("td").eq(2).select("a").text();
 				String detailUrl = baseUrl + el.getElementsByTag("td").eq(2).select("a").attr("href").toString();
 
-				bbs.setSubject(subject);;
+				bbs.setSubject(subject);
 				bbs.setLink(detailUrl);
 
 				bbs.setTime(el.getElementsByTag("td").eq(3).text());

@@ -96,7 +96,7 @@ public class JobParse {
 				bbs.setLink(detailUrl);
 
 				bbs.setTime(el.getElementsByTag("td").eq(3).text());
-				bbs.setCnt(Integer.parseInt(el.getElementsByTag("td").eq(5).text()));
+				//bbs.setCnt(Integer.parseInt(  ("".equals(el.getElementsByTag("td").eq(5).text())) ? "0" : el.getElementsByTag("td").eq(5).text() )  );
 				bbsList.add(bbs);
 			}
 			
