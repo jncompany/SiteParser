@@ -11,6 +11,7 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import com.jncompany.util.CompareCntDesc;
+import com.jncompany.util.Thumbnailtor;
 import com.jncompany.vo.ItemVo;
 
 public class PpomParse {
@@ -62,6 +63,10 @@ public class PpomParse {
 
 					bbs.setImgsrc(imgUrl);//imgUrl
 					bbs.setContent(imgStr + cont);//imgStr + cont
+					
+					if(!"".equals(imgUrl)){
+						bbs.setImgThumnailSrc(Thumbnailtor.generageImage(imgUrl));
+					}
 
 				}
 				

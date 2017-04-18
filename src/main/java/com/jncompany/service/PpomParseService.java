@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import com.jncompany.dao.PostRepository;
 import com.jncompany.util.CompareCntDesc2;
+import com.jncompany.util.Thumbnailtor;
 import com.jncompany.vo.PostVo;
 
 @Service
@@ -66,6 +67,9 @@ public class PpomParseService {
 
 					bbs.setImgsrc(imgUrl);//imgUrl
 					bbs.setContent(imgStr + cont);//imgStr + cont
+					if(!"".equals(imgUrl)){
+						bbs.setImgThumnailSrc(Thumbnailtor.generageImage(imgUrl));
+					}
 
 				}
 				

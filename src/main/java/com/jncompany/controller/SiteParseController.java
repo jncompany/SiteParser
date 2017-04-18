@@ -1,6 +1,8 @@
 package com.jncompany.controller;
 
+import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
@@ -9,6 +11,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -28,6 +31,8 @@ public class SiteParseController {
 	private ClienParseService cp;
 	@Autowired
 	private PpomParseService ps;
+	
+	private static String UPLOADED_FOLDER = "/imgFolder/";
 	
 	@CrossOrigin
 	@RequestMapping("/list")
@@ -59,19 +64,22 @@ public class SiteParseController {
 	@RequestMapping("/parseAll")
 	public void parse(HttpServletResponse response) throws IOException {
 		
-		System.out.println("cnt 1 : "+ getCurrentRowCount());
 		
 		dao.deleteAll();
-		System.out.println("cnt 2 : "+ getCurrentRowCount());
 		
 		cp.processParse();
-		System.out.println("cnt 3 : "+ getCurrentRowCount());
 		
 		ps.processParse();
-		System.out.println("cnt 4 : "+ getCurrentRowCount());
 		
 		response.sendRedirect("/list");
 	}
+	
+	@RequestMapping(value = "/image/{imageName}")
+    public byte[] getImage(@PathVariable(value = "imageName") String imageName) throws IOException {
+		
+        File serverFile = new File(UPLOADED_FOLDER + imageName+".png" );
+        return Files.readAllBytes(serverFile.toPath());
+    }
 	
 	
 	public long getCurrentRowCount(){

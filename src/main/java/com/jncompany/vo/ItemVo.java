@@ -5,6 +5,7 @@ public class ItemVo {
 	private String subject;
 	private String link;
 	private String imgsrc;
+	private String imgThumnailSrc;
 	private String content;
 	private String time;
 	private int cnt;
@@ -44,9 +45,15 @@ public class ItemVo {
 	public void setCnt(int cnt) {
 		this.cnt = cnt;
 	}
+	public String getImgThumnailSrc() {
+		return imgThumnailSrc;
+	}
+	public void setImgThumnailSrc(String imgThumnailSrc) {
+		this.imgThumnailSrc = imgThumnailSrc;
+	}
 	@Override
 	public String toString() {
-		return "ItemVo [subject=" + subject +"\n"+ ", link=" + link +"\n"+ ", imgsrc=" + imgsrc +"\n"+ ", content=" + content
+		return "ItemVo [subject=" + subject +"\n"+ ", link=" + link +"\n"+ ", imgsrc=" + imgsrc +"\n"+ ", content=" + content+ ", imgThumnailSrc ="+ imgThumnailSrc
 				+"\n"+ ", time=" + time + ", cnt=" + cnt + "]"+"\n";
 	}
 	

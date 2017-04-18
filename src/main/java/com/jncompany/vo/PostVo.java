@@ -18,6 +18,7 @@ public class PostVo {
 	
 	@Column( length = 1000 )
 	private String imgsrc;
+	private String imgThumnailSrc;
 	private String content;
 	private String time;
 	private int cnt;
@@ -71,9 +72,16 @@ public class PostVo {
 	public void setCnt(int cnt) {
 		this.cnt = cnt;
 	}
+	
+	public String getImgThumnailSrc() {
+		return imgThumnailSrc;
+	}
+	public void setImgThumnailSrc(String imgThumnailSrc) {
+		this.imgThumnailSrc = imgThumnailSrc;
+	}
 	@Override
 	public String toString() {
-		return "PostVo [id=" + id + ", site=" + site + ", subject=" + subject + ", link=" + link + ", imgsrc=" + imgsrc
+		return "PostVo [id=" + id + ", site=" + site + ", subject=" + subject + ", link=" + link + ", imgsrc=" + imgsrc + ", imgThumnailSrc ="+ imgThumnailSrc
 				+ ", content=" + content + ", time=" + time + ", cnt=" + cnt + "]";
 	}
 	

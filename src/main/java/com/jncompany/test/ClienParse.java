@@ -11,6 +11,7 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import com.jncompany.util.CompareCntDesc;
+import com.jncompany.util.Thumbnailtor;
 import com.jncompany.vo.ItemVo;
 
 public class ClienParse {
@@ -68,6 +69,11 @@ public class ClienParse {
 
 					bbs.setImgsrc(imgUrl);
 					bbs.setContent(imgStr + cont);
+					
+					if(!"".equals(imgUrl)){
+						String rtn = Thumbnailtor.generageImage(imgUrl);
+						bbs.setImgThumnailSrc(rtn);
+					}
 
 				}
 				
