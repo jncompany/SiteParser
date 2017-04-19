@@ -37,7 +37,7 @@ public class Thumbnailtor {
 			return "";
 		} 
 		
-		return thumbnail.getPath();
+		return imgFileName+".png";
 	}
 
 }

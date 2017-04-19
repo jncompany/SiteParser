@@ -50,7 +50,7 @@ public class SiteParseController {
 		
 		dao.deleteAll();
 		cp.processParse();
-		response.sendRedirect("/list");
+		response.sendRedirect("siteParser/list");
 	}
 	
 	@RequestMapping("/parsePpom")
@@ -58,7 +58,7 @@ public class SiteParseController {
 		
 		dao.deleteAll();
 		ps.processParse();
-		response.sendRedirect("/list");
+		response.sendRedirect("siteParser/list");
 	}
 	
 	@RequestMapping("/parseAll")
@@ -71,7 +71,7 @@ public class SiteParseController {
 		
 		ps.processParse();
 		
-		response.sendRedirect("/list");
+		response.sendRedirect("siteParser/list");
 	}
 	
 	@RequestMapping(value = "/image/{imageName}")
